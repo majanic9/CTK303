@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Circles</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: pink;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+        }
+        h2 {
+            text-align: center;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle" id="circle1"></div>
+    <div class="circle" id="circle2"></div>
+    <div class="circle" id="circle3"></div>
+    <div class="circle" id="circle4"></div>
+
+    <script>
+        const circles = document.querySelectorAll('.circle');
+        const maxSpeed = 10;
+
+        const randomSpeed = () => Math.random() * (maxSpeed * 2) - maxSpeed;
+        const randomPosition = () => Math.random() * 90;
+
+        circles.forEach(circle => {
+            circle.style.left = `${randomPosition()}vw`;
+            circle.style.top = `${randomPosition()}vh`;
+            const xSpeed = randomSpeed();
+            const ySpeed = randomSpeed();
+
+            const animateCircle = () => {
+                const rect = circle.getBoundingClientRect();
+                const left = rect.left;
+                const top = rect.top;
+                const right = rect.right;
+                const bottom = rect.bottom;
+
+                if (right >= window.innerWidth || left <= 0) {
+                    xSpeed *= -1;
+                }
+
+                if (bottom >= window.innerHeight || top <= 0) {
+                    ySpeed *= -1;
+                }
+
+                circle.style.left = `${left + xSpeed}px`;
+                circle.style.top = `${top + ySpeed}px`;
+
+                requestAnimationFrame(animateCircle);
+            };
+
+            animateCircle();
+        });
+    </script>
+    <h2> Bouncy Ball </h2>
+</body>
+</html>

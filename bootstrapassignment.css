@@ -3,7 +3,7 @@ h2{
 
 }
 #imageCarousel {
-    width: 50%;
+    width: 100%;
 	margin-bottom: 1rem;
     
 }
@@ -11,6 +11,7 @@ h2{
     margin: 0 auto; /* Added */
     float: right; /* Added */
     margin-bottom: 20px; /* Added */
+    
 
 }
     
@@ -18,9 +19,20 @@ h2{
 @media all and (min-width: 30rem){
 	h2 { color: rgb(143, 188, 143); }
     h3{color:powderblue}
+   
+
 }
 
 @media all and (min-width: 50rem){
 	h2 { color: rgb(255, 138, 198); padding-bottom: .1rem; }
 	h3 {color:lightpink; padding-bottom: .1rem;}
+    nav { width: 100%; 
+
+    }
+   
+    
+    
 }
+
+
+
